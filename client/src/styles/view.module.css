@@ -1,0 +1,234 @@
+.viewWrapper {
+    position: fixed;  
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg,#bbddff, #88aed4,#749dc7, #a5a3b7, #9fa1b2, #9bafcc, #7d92b1, #697fa1);
+    /* background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #0000ff, #8a2be2, #ff0000); */
+    background-size: 400% 400%;
+    animation: gradientMove 5s infinite linear;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.viewContainer {
+    background-color: #edf0f4;
+    box-shadow: 6px 5px 7px 0px rgba(0, 0, 0, 0.2), 6px 5px 20px 0px rgba(0, 0, 0, 0.1) inset;
+    display: flex;
+    width: 75%;
+    height: 87%;
+    flex-direction: row;
+    gap:2rem;
+    padding: 1.5rem 3rem;
+    border-radius: 30px;
+    /* border: 5px solid #5e80a3; */
+}
+
+.viewLeftCol {
+    display: flex;
+    flex-direction: column;
+    /* align-items: censter; */
+    gap:1rem;
+    justify-content: center;
+    width: 30%;
+    margin-top: 3rem;
+}
+
+/* Styling the calendar container */
+.viewCalender {
+  border-radius: 10px;
+  padding: 0rem 1.5rem 0.9rem;
+  border: 2px solid hsl(216, 61%, 82%) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Highlight today's date */
+.todayHighlight {
+  background-color: #88aed4 !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+/* Style the header (month, year) */
+.react-calendar__navigation button {
+  background-color: #749dc7;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 16px;
+}
+.react-calendar__month-view__weekdays {
+    text-decoration: none !important;
+    text-transform: lowercase;
+  }
+/* Styling for active date */
+.react-calendar__tile--active {
+  background-color: #88aed4;
+}
+
+
+.viewImg {
+
+}
+
+.viewRightCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:2rem;
+    width: 70%;
+}
+
+.viewHeading {
+ font-size: 40px;
+}
+
+.viewEntries {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.viewEntryEach {
+    background-color: #ffffff;
+    border: 2px solid #B5CBED;
+    padding: 3rem 2rem;
+    border-radius: 5px 21px 5px 21px; ;
+}
+
+.viewEntryDate {
+    font-size:15px;
+}
+
+.viewNoEntry {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.viewRemainingEntry{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+@media (max-width: 680px) {
+    .viewWrapper {
+        position: fixed;  
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;/* background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #0000ff, #8a2be2, #ff0000); */
+        background-size: none;
+    }
+    
+    @keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
+    .viewContainer {
+        background-color: #edf0f4;
+        box-shadow: none;
+        width: 100vw;
+        height: 93vh;
+        border-top: 9px solid #6185a9;
+        border-bottom: 9px solid #6185a9;
+        border-left: 7px solid #6185a9;
+        border-right: 7px solid #6185a9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:2rem;
+        padding: 1.5rem 0rem;
+        border-radius:0px;
+        /* border: 5px solid #5e80a3; */
+    }
+    
+    .viewLeftCol {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:1rem;
+        justify-content: center;
+        width: none;
+        margin-top: 2rem;
+    }
+    
+    .viewCalender{
+    
+    }
+    
+    .viewImg {
+        display: none;
+    }
+    
+    .viewRightCol {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:2rem;
+        width: none;
+    }
+    
+    .viewHeading {
+     font-size: 40px;
+    }
+    
+    .viewEntries {
+        display:flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        scroll-behavior: auto;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .viewEntryEach {
+        background-color: #ffffff;
+        border: 2px solid #B5CBED;
+        padding: 3rem 2rem;
+        border-radius: 30px;
+    }
+    
+    .viewEntryDate {
+        font-size:20px;
+    }
+    
+    .viewNoEntry {
+        font-size:15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

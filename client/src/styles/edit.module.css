@@ -1,0 +1,271 @@
+.editWrapper{
+    position: fixed;  
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg,#bbddff, #88aed4,#749dc7, #a5a3b7, #9fa1b2, #9bafcc, #7d92b1, #697fa1);
+    /* background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #0000ff, #8a2be2, #ff0000); */
+    background-size: 400% 400%;
+    animation: gradientMove 5s infinite linear;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.editContainer{
+    background-color: #edf0f4;
+    /* background-color: #F3F5F8; */
+    /* background-color: #F2F7FC; */
+    /* background: linear-gradient(to bottom, #bbddff, #ebeff1); */
+    box-shadow: 6px 5px 7px 0px rgba(0, 0, 0, 0.2), 6px 5px 20px 0px rgba(0, 0, 0, 0.1) inset;
+    display: flex;
+    width: 50%;
+    height: 70%;
+    flex-direction: column;
+    gap:2rem;
+    padding: 4rem 5rem;
+    border-radius: 30px;
+    /* border: 5px solid #5e80a3; */
+}
+
+.editField {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: 90%;
+}
+
+.editTitleInput {
+    /* margin-bottom: 40px; */
+    padding: 15px 0px 10px 15px;
+    /* font-size: 25px; */
+    background-color: #F3F5F8;
+    color: #000000; /* Text color */
+    border: none; /* Remove default border */
+    border: 1px solid #B5CBED;
+    font-size: 40px;
+    border-radius: 10px;
+    transition: border 0.1s ease; 
+    /* height:10%; */
+
+}
+
+.editTitleInput::placeholder {
+    color: #b4b4b4; /* Change placeholder color */
+    opacity: 4;  /* Ensure full visibility */
+    font-weight: 0;
+}
+
+.editTitleInput:focus {
+    border: 2px solid #B5CBED; /* Increase border width */
+    outline: none;
+}
+
+.editContentArea {
+    padding: 15px 0px 10px 15px;
+    color: #000000; /* Text color */
+    background-color: #F3F5F8;
+    color: #000000; /* Text color */
+    border: none; /* Remove default border */
+    outline: none; /* Remove focus outline */
+    font-size: 25px;
+    border: 1px solid #B5CBED; 
+    border-radius: 10px;
+    height:80%;
+}
+
+.editContentArea::placeholder {
+    color: #b4b4b4; /* Change placeholder color */
+    opacity: 4;  /* Ensure full visibility */
+    font-weight: 0;
+  }
+
+.editContentArea:focus {
+    border: 2px solid #B5CBED; /* Increase border width */
+    outline: none;
+}
+
+.editButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editSaveButton {
+    background: none;
+    border: none;
+    color:#E8EAE5;
+    background-color: #749dc7;
+    font-size: 20px;
+    padding: 15px 25px; 
+    border-radius: 10px;
+}
+
+.editDeleteButton {
+    background: none;
+    border: none;
+    color:#E8EAE5;
+    text-decoration: none;
+    background-color: #749dc7;
+    font-size: 20px;
+    padding: 15px 25px; 
+    border-radius: 10px;
+    border: 1px solid #B5CBED; 
+    border-radius: 10px;
+
+}
+
+@media (max-width: 680px) {
+    .editWrapper {
+        position: fixed;  
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #6185a9;
+        overflow: hidden;
+    }
+    
+
+    
+    .editContainer {
+        background-color: #F3F5F8;
+        box-shadow: none;
+        display: flex;
+        width: 100%; 
+        height: 98.5%; 
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0rem 1.5rem;
+        border-top: 9px solid #6185a9;
+        border-bottom: 9px solid #6185a9;
+        border-left: 7px solid #6185a9;
+        border-right: 7px solid #6185a9;
+        border-radius: 0px;
+        /* border: 5px solid #5e80a3; */
+        
+    }
+    
+    .editField {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: 80%;
+    }
+    
+    .editTitleInput {
+        /* margin-bottom: 40px; */
+        padding: 10px 0px 10px 10px;
+        /* font-size: 25px; */
+        background-color: transparent;
+        color: #000000; /* Text color */
+        border: 0.1px solid #B5CBED; 
+        font-size: 25px;
+        border-radius: 10px;
+        transition: border 0.1s ease; 
+        /* height:10%; */
+    }
+    .editTitleInput::placeholder {
+        color: #b4b4b4; /* Change placeholder color */
+        opacity: 4;  /* Ensure full visibility */
+        font-weight: 0;
+      }
+    
+    .editTitleInput:focus {
+        border: 2px solid #B5CBED; /* Increase border width */
+        outline: none;
+    }
+    
+    .editContentArea { 
+        padding: 10px 0px 10px 10px;
+        color: #000000;
+        background-color: transparent;
+        color: #000000; 
+        border: none;
+        outline: none; 
+        font-size: 20px;
+        border: 0.1px solid #B5CBED; 
+        border-radius: 10px;
+        height:80%;
+    }
+    
+    .editContentArea::placeholder {
+        color: #b4b4b4; /* Change placeholder color */
+        opacity: 4;  /* Ensure full visibility */
+        font-weight: 0;
+      }
+    
+    .editContentArea:focus {
+        border: 2px solid #B5CBED; /* Increase border width */
+        outline: none;
+    }
+    
+    .editButton {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .editSaveButton {
+        background: none;
+        border: none;
+        color:#E8EAE5;
+        background-color: #749dc7;
+        font-size: 20px;
+        padding: 15px 25px; 
+        border-radius: 10px;
+    
+    }
+    .editDeleteButton {
+        background: none;
+        border: none;
+        color:#E8EAE5;
+        text-decoration: none;
+        background-color: #749dc7;
+        font-size: 20px;
+        padding: 15px 25px; 
+        border-radius: 10px;
+        border: 1px solid #B5CBED; 
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    
+    .editTitleInput {
+        font-size: 20px;
+    }
+    
+    .editContentArea {  
+        font-size: 15px;
+    }
+
+    
+    .editSaveButton {
+        font-size: 15px;
+        padding: 10px 20px;
+    }
+
+    .editDeleteButton{
+        font-size: 15px;
+        padding: 10px 20px;
+    }
+}

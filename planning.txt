@@ -1,0 +1,15 @@
+Shree Ganeshay namah
+
+1st page
+Login and signup === /login or /signup
+
+2nd page after authentication
+write a diary === /write auth require
+
+3rd page after saving the written part auth required
+read the lists of the pages represented using dates of that respective diary == read
+
+4rth page after clicking on any one date auth required
+view, edit, delete the page from database
+
+

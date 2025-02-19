@@ -1,0 +1,158 @@
+ .signWrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signContainer {
+    
+  /* background-image: linear-gradient(#a2ccf5,#90bff1, #c5c2da, #c5c7df, #aec6e8); */
+  background-color: #FBFDFF;
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2), 0 6px 2px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+    flex-direction: column;
+    padding: 30px 10px;
+    line-height: 3;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    max-width: 360px;
+    opacity: 95%;
+    width: 50%;
+}
+
+h1{
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+.signForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+
+.signField {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Makes it take the full width of its container */
+    max-width: 500px; /* Prevents it from becoming too large */
+    
+}
+
+.signInput{
+    width: 75%; /* Makes it take the full width of its container */
+    max-width: 400px; /* Prevents it from becoming too large */
+    padding: 13px 0px 10px 13px;
+    margin-top: 15px;
+    font-size: 18px;
+    background: #eeeeee; 
+    border:#717171;
+    border-radius: 10px;
+    outline: none;
+}
+.signInput::placeholder {
+    color: #7d7d7d; /* Lighter color for contrast */
+    opacity: 1; /* Ensure full visibility */
+}
+.signInput:focus {
+    border: 1.5px solid #7d7d7d;
+}
+
+.signSubmit {
+    background: black;
+    border: none;
+    color:#E8EAE5;
+    font-size: 18px;
+    margin: 40px 0px 10px;
+    padding: 13px 75px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.signSubmit:hover, .signSubmit:focus {
+    transform: scale(1.1); /* Increases size smoothly */
+}
+p{
+font-size: 18px;
+color: #000000;
+}
+
+.signLink{
+    background: none;
+    border: 2px solid #000000;
+    color: #000000;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px 50px;
+    border-radius: 10px;  
+    padding: 0px 85px;
+    border-radius: 10px;
+}
+
+@media (max-width:580px) {
+    .signWrapper {
+        /* visibility: hidden; */
+    }
+    
+    .signContainer {
+        /* background-image: linear-gradient(#a2ccf5,#90bff1, #c5c2da, #c5c7df, #aec6e8); */
+        background-image: linear-gradient(#88aed4,#749dc7, #a5a3b7, #9fa1b2, #9bafcc);
+        width: 100vw;
+        max-width: 100vw;
+        /* background: transparent; */
+        height: 100vh;
+        /* visibility: visible; */
+}
+    
+    h1{
+        display: flex;
+        justify-content: center;
+        color: #000000;
+        font-size: 40px;
+        margin-top: -50px;
+    }
+    
+    .signForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .signField {
+    }
+    
+    .signInput{
+        margin-top: 25px;
+        padding: 15px 0px 10px 15px;
+        font-size: 15px;
+    }
+    
+    .signSubmit {
+        font-size: 15px;
+        margin: 40px 0px 20px;
+        border-radius: 10px;
+        padding: 1rem 6.3rem;
+    }
+    
+    p{
+        color: black;
+    }
+    
+    .signLink{
+        font-size: 15px;
+        margin-top: 10px;
+        padding: 0rem 6rem;
+        border-radius: 10px;
+    }
+}

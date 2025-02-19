@@ -1,0 +1,8 @@
+* {
+  padding:0;
+  margin:0;
+  overflow: hidden; /* Prevent scrolling */
+  height: 100%;
+  /* font-family: "Indie Flower", serif; */
+}
+

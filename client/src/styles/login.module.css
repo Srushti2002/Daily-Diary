@@ -1,0 +1,168 @@
+.logWrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logContainer {
+    background-color: #FBFDFF;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2), 0 6px 2px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+      flex-direction: column;
+      padding: 30px 10px;
+      line-height: 3;
+      border-radius: 30px;
+      align-items: center;
+      justify-content: center;
+      max-width: 360px;
+      opacity: 95%;
+      width: 50%;
+}
+
+h1{
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    color: #000000;
+}
+
+.logForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+
+.logField {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Makes it take the full width of its container */
+    max-width: 500px; /* Prevents it from becoming too large */
+    
+}
+
+.logInput{
+    width: 75%; /* Makes it take the full width of its container */
+    max-width: 400px; /* Prevents it from becoming too large */
+    padding: 13px 0px 10px 13px;
+    margin-top: 15px;
+    font-size: 18px;
+    background: #eeeeee; 
+    border:#717171;
+    border-radius: 10px;
+    outline: none;
+}
+.logInput::placeholder {
+    color: #7d7d7d; /* Lighter color for contrast */
+    opacity: 1; /* Ensure full visibility */
+}
+.logInput:focus {
+    border: 1.5px solid #7d7d7d;
+}
+
+.logSubmit {
+    background: black;
+    border: none;
+    color:#E8EAE5;
+    font-size: 18px;
+    margin: 40px 0px 10px;
+    padding: 15px 85px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.logSubmit:hover, .logSubmit:focus {
+    transform: scale(1.1); /* Increases size smoothly */
+}
+
+p{
+font-size: 18px;
+color:#000000;
+}
+
+.logLink{
+    background: none;
+    border: 2px solid #000000;
+    color: #000000;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0px;
+    border-radius: 10px;  
+    padding: 0px 83px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+.logLink:hover, .logLink:focus {
+    transform: scale(1.1); /* Increases size smoothly */
+}
+
+@media (max-width:580px) {
+    .logWrapper {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .logContainer {
+       background-image: linear-gradient(#88aed4,#749dc7, #a5a3b7, #9fa1b2, #9bafcc);
+       width:100%;
+       max-width: 100%;
+       height: 100%;
+       align-items: center;
+       justify-content: center;
+  }
+    
+    h1{
+        display: flex;
+        justify-content: center;
+        color: #E6E9EB;
+        font-size: 40px;
+    }
+    
+    .logForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .logField {
+        /* display: flex;
+        flex-direction: column;
+        align-items: center; */
+    }
+    
+    .logInput{
+        /* margin-top: 30px; */
+        margin-bottom: 1rem;
+        padding: 18px 0px 10px 18px;
+        font-size: 18px;
+    
+    }
+    
+    .logSubmit {
+        font-size: 18px;
+        margin: 40px 0px 20px;
+        background-color:  #000000;
+        border-radius: 10px;
+        padding: 1rem 4.3rem;
+    }
+    
+    
+    
+    p{
+        color: black;
+        font-size: 18px;
+    }
+    
+    .logLink{
+        font-size: 18px;
+        margin-top: 10px;
+        padding: 0rem 3.9rem;
+        border-radius: 10px;
+    }
+}

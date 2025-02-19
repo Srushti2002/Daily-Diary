@@ -1,0 +1,138 @@
+import React, { useState, useEffect } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { isAuthenticated } from './../utils/auth';
+import styles from "../styles/view.module.css"; // Import the CSS module
+
+export default function View() {
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [entries, setEntries] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isAuthenticated()) {
+            navigate("/login"); // Redirect if not authenticated
+        }
+    }, []);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token'); // ✅ Get token before making request
+
+        if (!token) {
+        console.error(" No token found! User must log in.");
+        return;
+        }
+        const fetchEntries = async () => {
+            try {
+                const response = await axios.get("http://localhost:5000/view", {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setEntries(response.data);
+            } catch (error) {
+                console.error("Error fetching entries:", error);
+            }
+        };
+        fetchEntries();
+    }, []);
+
+    const filteredEntries = entries.filter(entry =>
+        new Date(entry.createdAt).toDateString() === selectedDate.toDateString()
+    );
+
+    return (
+        <div className={styles.container}>
+            {/* Calendar and Image Section */}
+            <div className={styles.calendarContainer}>
+                <Calendar onChange={setSelectedDate} value={selectedDate} />
+                <img src="/notebook.png" alt="Notebook" className={styles.calendarImage} />
+            </div>
+
+            {/* Entries Section */}
+            <div className={styles.entriesContainer}>
+                <h2>Entries for {selectedDate.toDateString()}</h2>
+                {filteredEntries.length > 0 ? (
+                    filteredEntries.map(entry => (
+                        <div 
+                            key={entry._id} 
+                            className={styles.entryCard}
+                            onClick={() => navigate(`/edit/${entry._id}`)}
+                        >
+                            <h3 className={styles.entryTitle}>{entry.title}</h3>
+                            <p>{entry.content.substring(0, 100)}...</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>No entries for this date.</p>
+                )}
+            </div>
+        </div>
+    );
+};
+
+
+
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import axios from 'axios';
+
+const View = () => {
+    const [entries, setEntries] = useState([]);
+    const [selectedDate, setSelectedDate] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchEntries = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    console.error(" No token found! User must log in.");
+                    return;
+                  }
+                const response = await axios.get('http://localhost:5000/view', {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setEntries(response.data);
+            } catch (error) {
+                console.error('Error fetching entries:', error);
+            }
+        };
+        fetchEntries();
+    }, []);
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+
+    const filteredEntries = selectedDate
+        ? entries.filter(entry => new Date(entry.createdAt).toDateString() === selectedDate.toDateString())
+        : entries;
+
+    return (
+        <div className="container">
+            <h2>Your Diary Entries</h2>
+            <Calendar onChange={handleDateChange} value={selectedDate} />
+            <div className="entries">
+                {filteredEntries.length > 0 ? (
+                    filteredEntries.map(entry => (
+                        <div key={entry._id} className="entry-card" onClick={() => navigate(`/edit/${entry._id}`)}>
+                            <p>{new Date(entry.createdAt).toDateString()}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>No entries found for this date.</p>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default View;
+
+
+
+
+
