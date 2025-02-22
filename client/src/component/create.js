@@ -4,6 +4,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import { isAuthenticated } from './../utils/auth';
+import Navbar from './navbar.js';
 import useAuthRedirect from '../hooks/useAuthRedirect';
 // import * as THREE from "three"; // Ensure Three.js is available
 // import CLOUDS from "vanta/dist/vanta.clouds.min";
@@ -67,7 +68,11 @@ export default function Create() {
     <div className={styles.createWrapper} 
     // ref={myRef}
     >
-      <form className={styles.createForm} onSubmit={handleSubmit}>
+      <div className={styles.createContainer} >
+        <div className={styles.createNavigation} >
+          <Navbar />
+        </div>
+        <form className={styles.createForm} onSubmit={handleSubmit}>
         <div className={styles.createField}>
           <input 
            className={styles.createInput}
@@ -87,6 +92,7 @@ export default function Create() {
           <Link className={styles.createLink}to='/view'>View</Link>
         </div>
       </form>
+      </div>
     </div>
   )
 }

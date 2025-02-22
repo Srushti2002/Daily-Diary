@@ -136,3 +136,154 @@ export default View;
 
 
 
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import styles from '../styles/navbar.module.css'
+
+export default function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen)
+    }
+
+    useEffect(() => {
+        const closeMenuOutsideClick = (event) => {
+            const targetElement = event.target;
+
+            if(!targetElement.closest(`.${styles.menu}`) && !targetElement.closest(`${styles.hamburgerMenu}`)) {
+                setMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('click', closeMenuOutsideClick);
+
+        return () => {
+            document.removeEventListener('click', closeMenuOutsideClick);
+        };
+    }, [])
+
+    return (
+        <div className={styles.navWrapper}>
+            <div className={`${styles.menu} ${menuOpen ? styles : ''}`}>
+                <div className={styles.hamburgerMenu} onClick={toggleMenu}>
+                    <div className={`${styles.bar} ${menuOpen ? styles.bar1Open : ''}`}/>
+                    <div className={`${styles.bar} ${menuOpen ? styles.bar2Open : ''}`}/>
+                    <div className={`${styles.bar} ${menuOpen ? styles.bar3Open : ''}`}/>
+                        {menuOpen ? 
+                        <ul className={styles.menuList}>
+                            <li>
+                                <Link className={styles.linkStyle} to="/">Signup</Link>
+                            </li>
+                            <li>
+                                <Link className={styles.linkStyle} to="/login">Login</Link>
+                            </li>
+                            <li>
+                                <Link className={styles.linkStyle} to="/create">Create</Link>
+                            </li>
+                            <li>
+                                <Link className={styles.linkStyle} to="/view">View</Link>
+                            </li>
+                        </ul>:
+                        <div></div>
+                        }
+                </div>
+            </div>
+        </div>
+    )
+}
+
+.navWrapper {     
+    padding: 1.5rem 1rem; /* Adjusted padding for mobile view */
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.menu {
+  /* position: relative; */
+
+  position: relative; /* Ensures .menuList is positioned relative to it */
+  display: inline-block; /* Keeps menu inline */
+  cursor: pointer;
+
+  }
+
+  .hamburgerMenu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  
+  .bar {
+    height: 0.15rem; /* Equivalent to 5px */
+    width: 1.5rem; /* Equivalent to 40px */
+    background: linear-gradient( #749dc7 0%, #749dc7 100%);
+    margin: 0.15rem 0; /* Equivalent to 10px */
+    transition: 0.4s;
+  }
+  
+
+  .bar1Open {
+      transform: rotate(-45deg) translate(-0.5rem, 0.6rem);
+    }
+
+    .bar2Open {
+      opacity: 0;
+    }
+
+    .bar3Open {
+      transform: rotate(45deg) translate(-0.5rem, -0.6rem);
+    }
+
+  .menuList { 
+    position: absolute;
+    top: 100%; /* Places it directly below the hamburger */
+    left: 50%; /* Centers it relative to the menu */
+    transform: translateX(-50%); /* Centers it properly */
+    z-index: 4;
+    margin: 1em auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #749dc7;
+    opacity: 0; 
+    /* Initially hidden */
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+  /* .menuList.active {
+    opacity: 1;
+    visibility: visible;
+} */
+  li {
+    list-style: none; 
+    border: 1px solid #fff;         
+    border-radius: 0px;
+    width:15vw;
+    margin: 0px 0px;
+
+  }
+
+     
+  .linkStyle {
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-style: normal;
+    padding: 0.4rem 0rem;
+    font-size: 17px;
+    display: block;
+    text-align: center;
+    margin: 1px 0px;
+
+}
+
+.linkStyle:hover{
+  color: #fff;
+}

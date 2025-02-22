@@ -25,7 +25,7 @@ function App() {
           <Navbar />
         )} */}
         <Routes>
-          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/create" element={<PrivateRoute><Create/></PrivateRoute>}/>
           <Route path="/view" element={<PrivateRoute><View /></PrivateRoute>}/>

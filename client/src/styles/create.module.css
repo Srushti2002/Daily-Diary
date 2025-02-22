@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
     background: linear-gradient(45deg,#bbddff, #88aed4,#749dc7, #a5a3b7, #9fa1b2, #9bafcc, #7d92b1, #697fa1);
-    /* background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #0000ff, #8a2be2, #ff0000); */
     background-size: 400% 400%;
     animation: gradientMove 5s infinite linear;
 }
@@ -26,42 +25,47 @@
     }
 }
 
-.createForm {
+.createContainer {
     background-color: #edf0f4;
-    /* background-color: #F3F5F8; */
-    /* background-color: #F2F7FC; */
-    /* background: linear-gradient(to bottom, #bbddff, #ebeff1); */
     box-shadow: 6px 5px 7px 0px rgba(0, 0, 0, 0.2), 6px 5px 20px 0px rgba(0, 0, 0, 0.1) inset;
     display: flex;
-    width: 50%;
-    height: 70%;
+    width: 55%;
+    height: 88.5%;
+    flex-direction: column;
+    gap:0rem;
+    padding: 1rem 3rem 2rem;
+    border-radius: 30px;  
+   
+}
+
+.createNavigation {
+    
+}
+.createForm {
+    z-index: 1;
+    display: flex;
     flex-direction: column;
     gap:2rem;
-    padding: 4rem 5rem;
-    border-radius: 30px;
-    /* border: 5px solid #5e80a3; */
-    
+    padding: 0rem;
+    height: 100%;
 }
 
 .createField {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    height: 90%;
+    gap: 1.5rem;
+    height: 100%;
 }
 
 .createInput {
-    /* margin-bottom: 40px; */
     padding: 15px 0px 10px 15px;
-    /* font-size: 25px; */
     background-color: #F3F5F8;
     color: #000000; /* Text color */
     border: none; /* Remove default border */
     border: 1px solid #B5CBED;
-    font-size: 40px;
+    font-size: 25px;
     border-radius: 10px;
-    transition: border 0.1s ease; 
-    /* height:10%; */
+    transition: border 0.1s ease;
 }
 .createInput::placeholder {
     color: #b4b4b4; /* Change placeholder color */
@@ -84,7 +88,7 @@
     font-size: 25px;
     border: 1px solid #B5CBED; 
     border-radius: 10px;
-    height:80%;
+    height:85%;
 }
 
 .createTextArea::placeholder {
@@ -108,10 +112,11 @@
 .createSubmit {
     background: none;
     border: none;
+    margin: 5px;
     color:#E8EAE5;
     background-color: #749dc7;
     font-size: 20px;
-    padding: 15px 25px; 
+    padding: 10px 25px; 
     margin-right: 10px;
     border-radius: 10px;
 
@@ -121,12 +126,46 @@
     border: none;
     color:#E8EAE5;
     text-decoration: none;
+    margin:5px;
     background-color: #749dc7;
     font-size: 20px;
-    padding: 15px 25px; 
+    padding: 10px 25px; 
     border-radius: 10px;
     border: 1px solid #B5CBED; 
     border-radius: 10px;
+}
+
+@media (max-width: 1250px) {
+    .createContainer {
+        width: 55%;
+        height: 90%;
+        flex-direction: column;
+        gap:0rem;
+        padding: 0rem 3rem 2rem;   
+    }
+
+    .createField {
+        gap: 1rem;
+    }
+    
+}
+@media (max-width: 1100px) {
+    .createContainer {
+        width: 60%;
+        height: 90%;
+        flex-direction: column;
+        gap:0rem;
+        padding: 0rem 3rem 2rem;   
+    }
+}
+@media (max-width: 850px) {
+    .createContainer {
+        width: 83%;
+        height: 90%;
+        flex-direction: column;
+        gap:0rem;
+        padding: 0rem 3rem 2rem;   
+    }
 }
 
 @media (max-width: 680px) {
@@ -142,10 +181,8 @@
         background: #6185a9;
         overflow: hidden;
     }
-    
-
-    
-    .createForm {
+      
+    .createContainer {
         background-color: #F3F5F8;
         box-shadow: none;
         display: flex;
@@ -153,15 +190,13 @@
         height: 98.5%; 
         flex-direction: column;
         justify-content: center;
-        gap: 1rem;
+        gap: 0rem;
         padding: 0rem 1.5rem;
         border-top: 9px solid #6185a9;
         border-bottom: 9px solid #6185a9;
         border-left: 7px solid #6185a9;
         border-right: 7px solid #6185a9;
-        border-radius: 0px;
-        /* border: 5px solid #5e80a3; */
-        
+        border-radius: 0px;    
     }
     
     .createField {
@@ -172,16 +207,13 @@
     }
     
     .createInput {
-        /* margin-bottom: 40px; */
         padding: 10px 0px 10px 10px;
-        /* font-size: 25px; */
         background-color: transparent;
         color: #000000; /* Text color */
         border: 0.1px solid #B5CBED; 
-        font-size: 25px;
+        font-size: 20px;
         border-radius: 10px;
-        transition: border 0.1s ease; 
-        /* height:10%; */
+        transition: border 0.1s ease;
     }
     .createInput::placeholder {
         color: #b4b4b4; /* Change placeholder color */
@@ -231,7 +263,7 @@
         color:#E8EAE5;
         background-color: #749dc7;
         font-size: 20px;
-        padding: 15px 25px; 
+        padding: 10px 25px;
         border-radius: 10px;
     
     }
@@ -242,31 +274,162 @@
         text-decoration: none;
         background-color: #749dc7;
         font-size: 20px;
-        padding: 15px 25px; 
+        padding: 10px 25px;
         border-radius: 10px;
         border: 1px solid #B5CBED; 
         border-radius: 10px;
     }
 }
 
-@media (max-width: 450px) {
-    
-    .createInput {
-        font-size: 20px;
-    }
-    
-    .createTextArea {  
-        font-size: 15px;
-    }
+@media (max-width: 490px) {
+        .createWrapper {
+            position: fixed;  
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #6185a9;
+            overflow: hidden;
+        }
+          
+        .createContainer {
+            background-color: #F3F5F8;
+            box-shadow: none;
+            display: flex;
+            width: 100%; 
+            height: 98.5%; 
+            flex-direction: column;
+            justify-content: center;
+            gap: 0rem;
+            padding: 0rem 1rem;
+            border-top: 9px solid #6185a9;
+            border-bottom: 9px solid #6185a9;
+            border-left: 7px solid #6185a9;
+            border-right: 7px solid #6185a9;
+            border-radius: 0px;    
+        }
+        
+        .createField {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            height: 80%;
+        }
+        
+        .createInput {
+            padding: 10px 0px 10px 10px;
+            background-color: transparent;
+            color: #000000; /* Text color */
+            border: 0.1px solid #B5CBED; 
+            font-size: 20px;
+            border-radius: 10px;
+            transition: border 0.1s ease;
+        }
+        .createInput::placeholder {
+            color: #b4b4b4; /* Change placeholder color */
+            opacity: 4;  /* Ensure full visibility */
+            font-weight: 0;
+          }
+        
+        .createInput:focus {
+            border: 2px solid #B5CBED; /* Increase border width */
+            outline: none;
+        }
+        
+        .createTextArea { 
+            padding: 10px 0px 10px 10px;
+            color: #000000;
+            background-color: transparent;
+            color: #000000; 
+            border: none;
+            outline: none; 
+            font-size: 20px;
+            border: 0.1px solid #B5CBED; 
+            border-radius: 10px;
+            height: 90%;
+        }
+        
+        .createTextArea::placeholder {
+            color: #b4b4b4; /* Change placeholder color */
+            opacity: 4;  /* Ensure full visibility */
+            font-weight: 0;
+          }
+        
+        .createTextArea:focus {
+            border: 2px solid #B5CBED; /* Increase border width */
+            outline: none;
+        }
+        
+        .createButton {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .createSubmit {
+            background: none;
+            border: none;
+            color:#E8EAE5;
+            background-color: #749dc7;
+            font-size: 20px;
+            padding: 10px 25px;
+            border-radius: 10px;
+        
+        }
+        .createLink {
+            background: none;
+            border: none;
+            color:#E8EAE5;
+            text-decoration: none;
+            background-color: #749dc7;
+            font-size: 20px;
+            padding: 10px 25px;
+            border-radius: 10px;
+            border: 1px solid #B5CBED; 
+            border-radius: 10px;
+        } 
+}
 
+@media (max-width: 410px) {
+    .createWrapper {
+        position: fixed;  
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #6185a9;
+        overflow: hidden;
+    }
+      
+    .createContainer {
+        background-color: #F3F5F8;
+        box-shadow: none;
+        display: flex;
+        width: 100%; 
+        height: 98.5%; 
+        flex-direction: column;
+        justify-content: center;
+        gap: 0rem;
+        padding: 0rem 0.5rem;
+        border-top: 9px solid #6185a9;
+        border-bottom: 9px solid #6185a9;
+        border-left: 7px solid #6185a9;
+        border-right: 7px solid #6185a9;
+        border-radius: 0px;    
+    }
     
-    .createSubmit {
-        font-size: 15px;
-        padding: 10px 20px;
+    .createField {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        height: 80%;
     }
-
-    .createLink{
-        font-size: 15px;
-        padding: 10px 20px;
-    }
+    
 }

@@ -72,7 +72,7 @@ h1{
     padding: 15px 85px;
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
 }
 
 .logSubmit:hover, .logSubmit:focus {
@@ -95,7 +95,7 @@ color:#000000;
     padding: 0px 83px;
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
 }
 .logLink:hover, .logLink:focus {
     transform: scale(1.1); /* Increases size smoothly */
@@ -141,7 +141,6 @@ color:#000000;
         margin-bottom: 1rem;
         padding: 18px 0px 10px 18px;
         font-size: 18px;
-    
     }
     
     .logSubmit {

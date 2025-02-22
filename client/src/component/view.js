@@ -4,6 +4,7 @@ import styles from "../styles/view.module.css";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import axios from 'axios';
+import Navbar from './navbar.js';
 import Img from "../Img/girl.png"
 import useAuthRedirect from '../hooks/useAuthRedirect';
 
@@ -40,14 +41,21 @@ export default function View() {
     return (
     <div className={styles.viewWrapper}>
         <div className={styles.viewContainer}>
+           <div className={styles.viewTop}>
+            <Navbar />
+           </div>
+           <div className={styles.viewBottom}>
             <div className={styles.viewLeftCol}>
+            
             {/* <Calendar mode="single" className={styles.viewCalender} 
             selected={selectedDate} onSelect={handleDateChange} /> */}
                 <Calendar className={styles.viewCalender} onChange={handleDateChange} value={selectedDate} 
                 maxDate={new Date()} // Restrict future dates
                 tileClassName={({ date }) =>
                 date.toDateString() === new Date().toDateString() ? styles.todayHighlight : ''
-                } />
+                }
+                formatMonthYear={(locale, date) => date.toLocaleString(locale, { month: 'short', year: 'numeric' })}
+                 />
                 <img className={styles.viewImg} src={Img} alt = "A girl"/>
             </div>
             <div className={styles.viewRightCol}>
@@ -73,6 +81,9 @@ export default function View() {
     )}
                 </div>
             </div>
+
+           </div>
+
         </div>
     </div>
     )

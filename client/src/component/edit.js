@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import styles from '../styles/edit.module.css';
+import Navbar from './navbar.js';
 import axios from 'axios';
 
 export default function Edit() {
@@ -43,8 +44,13 @@ export default function Edit() {
   }
   return (
     <div className={styles.editWrapper}>
+      
       <div className={styles.editContainer}>
+        <div className={styles.editNavigation}>
+          <Navbar />
+        </div>
         <div className={styles.editField}>
+      
           <input 
             className={styles.editTitleInput}
             type="text"
@@ -61,6 +67,7 @@ export default function Edit() {
           />
         </div>
         <div className={styles.editButton}>
+          
           <button className={styles.editSaveButton} onClick={handleEditToggle}>{isEditing ? 'Save': 'Edit'}</button>
           <button className={styles.editDeleteButton} onClick={handleDelete}>Delete</button>
         </div>

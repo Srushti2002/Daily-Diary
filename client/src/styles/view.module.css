@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
     background: linear-gradient(45deg,#bbddff, #88aed4,#749dc7, #a5a3b7, #9fa1b2, #9bafcc, #7d92b1, #697fa1);
-    /* background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #0000ff, #8a2be2, #ff0000); */
     background-size: 400% 400%;
     animation: gradientMove 5s infinite linear;
 }
@@ -29,27 +28,37 @@
     background-color: #edf0f4;
     box-shadow: 6px 5px 7px 0px rgba(0, 0, 0, 0.2), 6px 5px 20px 0px rgba(0, 0, 0, 0.1) inset;
     display: flex;
-    width: 75%;
-    height: 87%;
-    flex-direction: row;
-    gap:2rem;
-    padding: 1.5rem 3rem;
+    width: 65%;
+    height: 90%;
+    flex-direction: column;
+    gap:0rem;
+    padding: 1rem 3rem;
     border-radius: 30px;
     /* border: 5px solid #5e80a3; */
 }
 
+.viewTop {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.viewBottom {
+    display: flex;
+    flex-direction: row;
+}
 .viewLeftCol {
     display: flex;
     flex-direction: column;
     /* align-items: censter; */
     gap:1rem;
     justify-content: center;
-    width: 30%;
-    margin-top: 3rem;
+    width: 45%;
 }
 
 /* Styling the calendar container */
 .viewCalender {
+  width: 100vw !important;
+  height: 20vw;
   border-radius: 10px;
   padding: 0rem 1.5rem 0.9rem;
   border: 2px solid hsl(216, 61%, 82%) !important;
@@ -63,6 +72,27 @@
   font-weight: bold;
 }
 
+.react-calendar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .react-calendar__month-view {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important; /* Ensures 7 columns always */
+  }
+  
+  .react-calendar__tile {
+    font-size: clamp(10px, 2vw, 16px) !important; /* Responsive font size */
+    text-align: center;
+  }
+  
+  .react-calendar__navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 /* Style the header (month, year) */
 .react-calendar__navigation button {
   background-color: #749dc7;
@@ -74,10 +104,13 @@
 .react-calendar__month-view__weekdays {
     text-decoration: none !important;
     text-transform: lowercase;
+    grid-template-columns: repeat(7, 1fr); /* Ensures all days show */
   }
 /* Styling for active date */
 .react-calendar__tile--active {
   background-color: #88aed4;
+  color: white !important;
+  border-radius: 5px;
 }
 
 
@@ -89,12 +122,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:2rem;
-    width: 70%;
+    gap:1rem;
+    width: 100%;
 }
 
 .viewHeading {
  font-size: 40px;
+ text-align: center;
+ overflow: visible; 
 }
 
 .viewEntries {
@@ -102,12 +137,14 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
 }
 
 .viewEntryEach {
     background-color: #ffffff;
     border: 2px solid #B5CBED;
-    padding: 3rem 2rem;
+    padding: 2rem 2rem;
     border-radius: 5px 21px 5px 21px; ;
 }
 
@@ -130,32 +167,92 @@
     gap: 1.5rem;
 }
 
+
+@media (max-width: 1250px) {
+    .viewContainer {
+        background-color: #edf0f4;
+        box-shadow: 6px 5px 7px 0px rgba(0, 0, 0, 0.2), 6px 5px 20px 0px rgba(0, 0, 0, 0.1) inset;
+        display: flex;
+        width: 70%;
+        height: 90%;
+        flex-direction: column;
+        gap:0rem;
+        padding: 1rem 1rem;
+        border-radius: 30px;
+        /* border: 5px solid #5e80a3; */
+    }
+    
+    .viewTop {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+    }
+    .viewBottom {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+    .viewLeftCol {
+        display: flex;
+        flex-direction: column;
+        /* align-items: censter; */
+        gap:1rem;
+        justify-content: center;
+        width: 45%;
+    }
+    
+    /* Styling the calendar container */
+    .viewCalender {
+      width: 100% !important;
+      height: 20vw;
+      border-radius: 10px;
+      padding: 0rem 1rem 0.5rem;
+      border: 2px solid hsl(216, 61%, 82%) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+}
+
+@media (max-width: 1100px) {
+    .viewContainer {
+        width: 80%;
+        height: 90%;
+    }
+
+    .viewLeftCol {
+        width: 55%;
+    }
+    
+    /* Styling the calendar container */
+    .viewCalender {
+      width: 100% !important;
+      height: 25vw;
+    }  
+}
+
+@media (max-width: 850px) {
+    .viewContainer {
+        width: 90%;
+        height: 90%;
+    }
+
+    .viewLeftCol {
+        width: 70%;
+    }
+    
+    /* Styling the calendar container */
+    .viewCalender {
+      width: 100% !important;
+      height: 30vw;
+    }
+    
+}
+
+
 @media (max-width: 680px) {
     .viewWrapper {
-        position: fixed;  
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: none;/* background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #0000ff, #8a2be2, #ff0000); */
-        background-size: none;
+        background: #6185a9;
     }
-    
-    @keyframes gradientMove {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-    
     .viewContainer {
         background-color: #edf0f4;
         box-shadow: none;
@@ -167,26 +264,39 @@
         border-right: 7px solid #6185a9;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
         gap:2rem;
-        padding: 1.5rem 0rem;
+        padding: 1rem 1.5rem;
         border-radius:0px;
         /* border: 5px solid #5e80a3; */
     }
     
-    .viewLeftCol {
+        
+    .viewTop {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+    }
+    .viewBottom {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: flex-start;
+    }
+    .viewLeftCol {
+        display: flex;
+        flex-direction: column;
+        align-items: center ;
         gap:1rem;
-        justify-content: center;
-        width: none;
-        margin-top: 2rem;
+        margin-top: 0px;
+        justify-content: flex-start;
+        width: 60%;
+        height: 100%;
     }
     
     .viewCalender{
-    
+     width: 100%;
+     height: 90%;
     }
     
     .viewImg {
@@ -197,38 +307,136 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap:2rem;
+        gap:1rem;
+        height: 100%;
         width: none;
     }
     
     .viewHeading {
-     font-size: 40px;
+     font-size: 25px;
     }
     
     .viewEntries {
         display:flex;
-        flex-wrap: nowrap;
-        flex-direction: column;
+        flex-wrap:wrap;
         scroll-behavior: auto;
         justify-content: center;
         gap: 1rem;
     }
     
     .viewEntryEach {
-        background-color: #ffffff;
-        border: 2px solid #B5CBED;
-        padding: 3rem 2rem;
-        border-radius: 30px;
+        padding: 2rem 1rem;
     }
     
     .viewEntryDate {
-        font-size:20px;
+        font-size:18px;
     }
     
     .viewNoEntry {
         font-size:15px;
         display: flex;
         align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 490px) {  
+    .viewWrapper {
+        background: #6185a9;
+    }  
+    .viewContainer {
+        width: 100vw;
+        height: 96.5vh;
+        padding: 0.5rem 1rem;
+    }
+         
+    .viewTop {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+    }
+    .viewBottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .viewLeftCol {
+        display: flex;
+        flex-direction: column;
+        align-items: center ;
+        gap: 0.5rem;
+        margin-top: 0px;
+        justify-content: flex-start;
+        width: 95%;
+        height: 90%;
+    }
+    
+    .viewCalender{
+     width: 100%;
+     height: 100%;
+    }
+    
+    .viewImg {
+        display: none;
+    }
+    
+    .viewRightCol {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:1rem;
+        height: 100%;
+        width: none;
+    }
+    
+    .viewHeading {
+     font-size: 30px;
+    }
+    
+    .viewEntries {
+        display:flex;
+        flex-wrap:wrap;
+        scroll-behavior: auto;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .viewEntryEach {
+        padding: 1rem 1rem;
+    }
+    
+    .viewEntryDate {
+        font-size:18px;
+    }
+    
+    .viewNoEntry {
+        font-size:15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media (max-width: 410px) {
+    .viewRightCol {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:1rem;
+        height: 100%;
+    }
+    .viewEntries {
+        display:flex;
+        flex-direction: row;
+        scroll-behavior: auto;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .viewEntryEach{
+        display: flex;
+        width: 75%;
         justify-content: center;
     }
 }
