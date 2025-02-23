@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin: 'http://localhost:3000', // Or the actual origin of your frontend
+    origin: 'https://daily-diary-1.onrender.com', // Or the actual origin of your frontend
     credentials: true,
 }));
 const PORT = 5000;
