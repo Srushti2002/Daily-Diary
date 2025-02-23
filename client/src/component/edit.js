@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import styles from '../styles/edit.module.css';
 import Navbar from './navbar.js';
-import API_BASE_URL from '../config.js';
 import axios from 'axios';
 
 export default function Edit() {
@@ -11,6 +10,7 @@ export default function Edit() {
   const navigate = useNavigate();
   const [entry, setEntry] = useState({title: '', content: ''});
   const [isEditing, setIsEditing] = useState(false);
+  const API_BASE_URL = process.env.API_BASE_URL;
 
   useEffect(() => {
     axios.get(`${API_BASE_URL}/${entryID}`, {

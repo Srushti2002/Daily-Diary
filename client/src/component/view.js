@@ -3,7 +3,6 @@ import { useNavigate} from 'react-router-dom';
 import styles from "../styles/view.module.css";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import API_BASE_URL from '../config.js';
 import axios from 'axios';
 import Navbar from './navbar.js';
 import Img from "../Img/girl.png"
@@ -14,6 +13,7 @@ export default function View() {
     const [entries, setEntries] = useState([]);
     const [selectedDate, setSelectedDate] = useState();
     const navigate = useNavigate();
+    const API_BASE_URL = process.env.API_BASE_URL;
 
     useEffect(() => {
         const fetchEntries = async () => {

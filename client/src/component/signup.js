@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import styles from '../styles/signup.module.css';
 import axios from 'axios';
-import API_BASE_URL from '../config.js';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import * as THREE from "three"; // Ensure Three.js is available
@@ -15,6 +14,7 @@ export default function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const API_BASE_URL = process.env.API_BASE_URL;
 
     const [vantaEffect, setVantaEffect] = useState(null);
     const myRef = useRef(null);

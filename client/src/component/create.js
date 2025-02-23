@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import styles from '../styles/create.module.css';
-import API_BASE_URL from '../config.js';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
@@ -16,7 +15,7 @@ export default function Create() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const navigate = useNavigate();
-
+  const API_BASE_URL = process.env.API_BASE_URL;
   // const [vantaEffect, setVantaEffect] = useState(null);
   //   const myRef = useRef(null);
   
