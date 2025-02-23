@@ -15,8 +15,8 @@ export default function Create() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const navigate = useNavigate();
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-  
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL_PROD; // Hosted
+
   useEffect(() => {
     if (!isAuthenticated()) {
         navigate("/login"); // Redirect if not authenticated

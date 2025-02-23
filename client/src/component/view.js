@@ -13,7 +13,8 @@ export default function View() {
     const [entries, setEntries] = useState([]);
     const [selectedDate, setSelectedDate] = useState();
     const navigate = useNavigate();
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL_PROD; // Hosted
 
     useEffect(() => {
         const fetchEntries = async () => {

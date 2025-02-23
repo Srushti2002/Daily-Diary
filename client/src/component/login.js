@@ -13,8 +13,9 @@ export default function Login() {
     const navigate = useNavigate();
     const [vantaEffect, setVantaEffect] = useState(null);
     const myRef = useRef(null);
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-  
+    
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL_PROD; // Hosted
+
     useEffect(() => {
       if (!vantaEffect) {
         setVantaEffect(

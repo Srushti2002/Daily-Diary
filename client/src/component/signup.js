@@ -12,7 +12,8 @@ export default function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    
+  const API_BASE_URL =  process.env.REACT_APP_API_BASE_URL_PROD; // Hosted
 
     const [vantaEffect, setVantaEffect] = useState(null);
     const myRef = useRef(null);
