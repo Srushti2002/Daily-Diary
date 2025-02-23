@@ -45,6 +45,7 @@ export default function Login() {
         })
         .then(result => {
             console.log(result);
+            console.log("API BASE URL:", API_BASE_URL);
             if(result.data) {
                 localStorage.setItem('token', result.data)
                 navigate("/create")
