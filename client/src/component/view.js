@@ -14,7 +14,13 @@ export default function View() {
     const [selectedDate, setSelectedDate] = useState();
     const navigate = useNavigate();
     
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL_PROD; // Hosted
+    
+    const API_BASE_URL =
+    process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_API_BASE_URL_PROD  // Hosted API
+        : process.env.REACT_APP_API_BASE_URL;  // Local API
+
+    console.log("API BASE URL:", API_BASE_URL); // Debugging log
 
     useEffect(() => {
         const fetchEntries = async () => {
@@ -30,7 +36,7 @@ export default function View() {
             }
         };
         fetchEntries();
-    },[]);
+    },[API_BASE_URL]);
 
     const handleDateChange = (date) => {
         setSelectedDate(date);

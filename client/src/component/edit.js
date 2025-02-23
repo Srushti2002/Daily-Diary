@@ -11,19 +11,25 @@ export default function Edit() {
   const [entry, setEntry] = useState({title: '', content: ''});
   const [isEditing, setIsEditing] = useState(false);
   
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL_PROD; // Hosted
   
+  const API_BASE_URL =
+  process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_API_BASE_URL_PROD  // Hosted API
+      : process.env.REACT_APP_API_BASE_URL;  // Local API
+
+  console.log("API BASE URL:", API_BASE_URL); // Debugging log
+
   useEffect(() => {
-    axios.get(`${API_BASE_URL}/${entryID}`, {
+    axios.get(`${API_BASE_URL}/view/${entryID}`, {
       headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
     })
     .then(response => setEntry(response.data))
     .catch(error => console.error('Error fetchimh entry:', error))
-  }, [entryID]);
+  }, [entryID, API_BASE_URL]);
 
   const handleEditToggle = () => {
     if (isEditing) {
-      axios.put(`${API_BASE_URL}/${entryID}`, entry, {
+      axios.put(`${API_BASE_URL}/view/${entryID}`, entry, {
         headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
       })
       .then(() => alert('Entry Updated Successfully'))
@@ -34,7 +40,7 @@ export default function Edit() {
 
   const handleDelete = () => {
     if(window.confirm('Are you sure you want to delete this entry')) {
-      axios.delete(`${API_BASE_URL}/${entryID}`, {
+      axios.delete(`${API_BASE_URL}/view/${entryID}`, {
         headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
       })
       .then(() => {
