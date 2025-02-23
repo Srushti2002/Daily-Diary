@@ -1,6 +1,5 @@
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
-require('dotenv').config();
 import Signup from './component/signup';
 import View from './component/view';
 import Login from './component/login';
