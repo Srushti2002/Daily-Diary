@@ -3,7 +3,6 @@ import styles from '../styles/login.module.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-import API_BASE_URL from '../config.js';
 import * as THREE from "three"; // Ensure Three.js is available
 import CLOUDS from "vanta/dist/vanta.clouds.min";
 
@@ -14,7 +13,7 @@ export default function Login() {
     const navigate = useNavigate();
     const [vantaEffect, setVantaEffect] = useState(null);
     const myRef = useRef(null);
-    const API_BASE_URL = process.env.API_BASE_URL;
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   
     useEffect(() => {
       if (!vantaEffect) {
