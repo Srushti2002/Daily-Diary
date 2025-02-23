@@ -10,7 +10,7 @@ export default function Edit() {
   const navigate = useNavigate();
   const [entry, setEntry] = useState({title: '', content: ''});
   const [isEditing, setIsEditing] = useState(false);
-  const API_BASE_URL = process.env.API_BASE_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     axios.get(`${API_BASE_URL}/${entryID}`, {

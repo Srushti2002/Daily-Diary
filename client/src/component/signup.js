@@ -6,15 +6,13 @@ import {Link} from 'react-router-dom';
 import * as THREE from "three"; // Ensure Three.js is available
 import CLOUDS from "vanta/dist/vanta.clouds.min";
 
-
-
 export default function Signup() {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const API_BASE_URL = process.env.API_BASE_URL;
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const [vantaEffect, setVantaEffect] = useState(null);
     const myRef = useRef(null);
