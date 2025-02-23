@@ -3,6 +3,7 @@ import styles from '../styles/login.module.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import API_BASE_URL from '../config.js';
 import * as THREE from "three"; // Ensure Three.js is available
 import CLOUDS from "vanta/dist/vanta.clouds.min";
 
@@ -37,7 +38,7 @@ export default function Login() {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:5000/login",
+        axios.post(`${API_BASE_URL}/login`,
         {
             email,
             password

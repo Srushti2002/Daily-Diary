@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import styles from '../styles/signup.module.css';
 import axios from 'axios';
+import API_BASE_URL from '../config.js';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import * as THREE from "three"; // Ensure Three.js is available
@@ -40,7 +41,7 @@ export default function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:5000/signup", 
+        axios.post(`${API_BASE_URL}/signup`, 
         {name, 
         email, 
         password})

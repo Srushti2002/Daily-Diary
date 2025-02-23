@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import styles from '../styles/edit.module.css';
 import Navbar from './navbar.js';
+import API_BASE_URL from '../config.js';
 import axios from 'axios';
 
 export default function Edit() {
@@ -12,7 +13,7 @@ export default function Edit() {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/view/${entryID}`, {
+    axios.get(`${API_BASE_URL}/${entryID}`, {
       headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
     })
     .then(response => setEntry(response.data))
@@ -21,7 +22,7 @@ export default function Edit() {
 
   const handleEditToggle = () => {
     if (isEditing) {
-      axios.put(`http://localhost:5000/view/${entryID}`, entry, {
+      axios.put(`${API_BASE_URL}/${entryID}`, entry, {
         headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
       })
       .then(() => alert('Entry Updated Successfully'))
@@ -32,7 +33,7 @@ export default function Edit() {
 
   const handleDelete = () => {
     if(window.confirm('Are you sure you want to delete this entry')) {
-      axios.delete(`http://localhost:5000/view/${entryID}`, {
+      axios.delete(`${API_BASE_URL}/${entryID}`, {
         headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
       })
       .then(() => {

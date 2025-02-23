@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styles from '../styles/create.module.css';
+import API_BASE_URL from '../config.js';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
@@ -53,7 +54,7 @@ export default function Create() {
       console.error(" No token found! User must log in.");
       return;
     }
-    axios.post("http://localhost:5000/create",
+    axios.post(`${API_BASE_URL}/create`,
     {title,
     content},
     {

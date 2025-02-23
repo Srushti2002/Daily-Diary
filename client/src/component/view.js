@@ -3,6 +3,7 @@ import { useNavigate} from 'react-router-dom';
 import styles from "../styles/view.module.css";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import API_BASE_URL from '../config.js';
 import axios from 'axios';
 import Navbar from './navbar.js';
 import Img from "../Img/girl.png"
@@ -18,7 +19,7 @@ export default function View() {
         const fetchEntries = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:5000/view', {
+                const response = await axios.get(`${API_BASE_URL}/view`, {
                     headers: {authorization: `Bearer ${token}` }
                 });
                 setEntries(response.data);
