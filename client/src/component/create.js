@@ -16,29 +16,7 @@ export default function Create() {
   const [content, setContent] = useState('');
   const navigate = useNavigate();
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-  // const [vantaEffect, setVantaEffect] = useState(null);
-  //   const myRef = useRef(null);
   
-  //   useEffect(() => {
-  //     if (!vantaEffect) {
-  //       setVantaEffect(
-  //         CLOUDS({
-  //           el: myRef.current,
-  //           THREE: THREE, // Required for React
-  //           mouseControls: true,
-  //           touchControls: true,
-  //           gyroControls: false,
-  //           minHeight: 200.0,
-  //           minWidth: 200.0,
-  //         })
-  //       );
-  //     }
-  
-  //     return () => {
-  //       if (vantaEffect) vantaEffect.destroy(); // Cleanup effect on unmount
-  //     };
-  //   }, [vantaEffect]);
-
   useEffect(() => {
     if (!isAuthenticated()) {
         navigate("/login"); // Redirect if not authenticated

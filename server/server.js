@@ -7,8 +7,20 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+const allowedOrigins = [
+    'http://localhost:3000', // Development Frontend
+    'https://daily-diary-1.onrender.com' // Production Frontend
+];
+
 app.use(cors({
-    origin: 'https://daily-diary-1.onrender.com', // Or the actual origin of your frontend
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
 }));
 const PORT = 5000;
