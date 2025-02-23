@@ -95,7 +95,7 @@ export default function Login() {
                     <button className={styles.logSubmit} type="submit">Submit</button>
                 </form>
                 <p>Don't have an account ?</p>
-                <Link className={styles.logLink} to="/signup">Signup</Link>
+                <Link className={styles.logLink} to="/">Signup</Link>
             </div>
         </div>
     )
