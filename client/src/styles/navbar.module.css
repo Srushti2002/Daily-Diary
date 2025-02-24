@@ -154,7 +154,7 @@
   }
   
   [data-page="view"] {
-    --menu-top: 7%;
+    --menu-top: 6%;
     --menu-left: 75%;
   }
 }
@@ -196,7 +196,7 @@
 }
 
 [data-page="view"] {
-  --menu-top: 5%;
+  --menu-top: 6%;
   --menu-left: 65%;
 }
 }
@@ -214,7 +214,7 @@
 }
 
 [data-page="view"] {
-  --menu-top: 3%;
+  --menu-top: 6%;
   --menu-left: 9.5%;
 }
 }

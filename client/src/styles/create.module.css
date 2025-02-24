@@ -12,7 +12,6 @@
     animation: gradientMove 5s infinite linear;
 }
 
-
 @keyframes gradientMove {
     0% {
         background-position: 0% 50%;
@@ -30,10 +29,10 @@
     box-shadow: 6px 5px 7px 0px rgba(0, 0, 0, 0.2), 6px 5px 20px 0px rgba(0, 0, 0, 0.1) inset;
     display: flex;
     width: 55%;
-    height: 88.5%;
+    height: 92.5%;
     flex-direction: column;
     gap:0rem;
-    padding: 1rem 3rem 2rem;
+    padding: 0rem 3rem 1rem;
     border-radius: 30px;  
    
 }
@@ -45,7 +44,7 @@
     z-index: 1;
     display: flex;
     flex-direction: column;
-    gap:2rem;
+    gap:1rem;
     padding: 0rem;
     height: 100%;
 }
@@ -61,7 +60,6 @@
     padding: 15px 0px 10px 15px;
     background-color: #F3F5F8;
     color: #000000; /* Text color */
-    border: none; /* Remove default border */
     border: 1px solid #B5CBED;
     font-size: 25px;
     border-radius: 10px;
@@ -69,8 +67,7 @@
 }
 .createInput::placeholder {
     color: #b4b4b4; /* Change placeholder color */
-    opacity: 4;  /* Ensure full visibility */
-    font-weight: 0;
+    opacity: 4;  
 }
 
 .createInput:focus {
@@ -83,7 +80,6 @@
     color: #000000; /* Text color */
     background-color: #F3F5F8;
     color: #000000; /* Text color */
-    border: none; /* Remove default border */
     outline: none; /* Remove focus outline */
     font-size: 25px;
     border: 1px solid #B5CBED; 
@@ -110,7 +106,6 @@
 }
 
 .createSubmit {
-    background: none;
     border: none;
     margin: 5px;
     color:#E8EAE5;
@@ -122,8 +117,6 @@
 
 }
 .createLink {
-    background: none;
-    border: none;
     color:#E8EAE5;
     text-decoration: none;
     margin:5px;
@@ -137,11 +130,9 @@
 
 @media (max-width: 1250px) {
     .createContainer {
-        width: 55%;
-        height: 90%;
-        flex-direction: column;
-        gap:0rem;
-        padding: 0rem 3rem 2rem;   
+        width: 57%;
+        height: 93%;
+        padding: 0rem 2.5rem 1rem;   
     }
 
     .createField {
@@ -151,33 +142,21 @@
 }
 @media (max-width: 1100px) {
     .createContainer {
-        width: 60%;
-        height: 90%;
-        flex-direction: column;
-        gap:0rem;
-        padding: 0rem 3rem 2rem;   
+        width: 65%;
+        height: 93%;
+        padding: 0rem 2rem 1rem;   
     }
 }
 @media (max-width: 850px) {
     .createContainer {
-        width: 83%;
+        width: 85%;
         height: 90%;
-        flex-direction: column;
-        gap:0rem;
-        padding: 0rem 3rem 2rem;   
+        padding: 0rem 2rem 2rem;   
     }
 }
 
 @media (max-width: 680px) {
     .createWrapper {
-        position: fixed;  
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         background: #6185a9;
         overflow: hidden;
     }
@@ -185,15 +164,13 @@
     .createContainer {
         background-color: #F3F5F8;
         box-shadow: none;
-        display: flex;
         width: 100%; 
-        height: 98.5%; 
+        height: 98%; 
         flex-direction: column;
         justify-content: center;
-        gap: 0rem;
         padding: 0rem 1.5rem;
-        border-top: 9px solid #6185a9;
-        border-bottom: 9px solid #6185a9;
+        border-top: 7px solid #6185a9;
+        border-bottom: 7px solid #6185a9;
         border-left: 7px solid #6185a9;
         border-right: 7px solid #6185a9;
         border-radius: 0px;    
@@ -203,17 +180,14 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        height: 80%;
+        height: 83%;
     }
     
     .createInput {
         padding: 10px 0px 10px 10px;
         background-color: transparent;
-        color: #000000; /* Text color */
         border: 0.1px solid #B5CBED; 
         font-size: 20px;
-        border-radius: 10px;
-        transition: border 0.1s ease;
     }
     .createInput::placeholder {
         color: #b4b4b4; /* Change placeholder color */
@@ -251,185 +225,49 @@
     }
     
     .createButton {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: left;
     }
-    
-    .createSubmit {
-        background: none;
-        border: none;
-        color:#E8EAE5;
-        background-color: #749dc7;
-        font-size: 20px;
-        padding: 10px 25px;
-        border-radius: 10px;
-    
-    }
-    .createLink {
-        background: none;
-        border: none;
-        color:#E8EAE5;
-        text-decoration: none;
-        background-color: #749dc7;
-        font-size: 20px;
-        padding: 10px 25px;
-        border-radius: 10px;
-        border: 1px solid #B5CBED; 
-        border-radius: 10px;
-    }
+
 }
 
 @media (max-width: 490px) {
         .createWrapper {
-            position: fixed;  
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background: #6185a9;
             overflow: hidden;
         }
           
         .createContainer {
-            background-color: #F3F5F8;
-            box-shadow: none;
-            display: flex;
             width: 100%; 
-            height: 98.5%; 
-            flex-direction: column;
-            justify-content: center;
-            gap: 0rem;
+            height: 98%; 
             padding: 0rem 1rem;
-            border-top: 9px solid #6185a9;
-            border-bottom: 9px solid #6185a9;
+            border-top: 7px solid #6185a9;
+            border-bottom: 7px solid #6185a9;
             border-left: 7px solid #6185a9;
             border-right: 7px solid #6185a9;
-            border-radius: 0px;    
         }
         
         .createField {
-            display: flex;
-            flex-direction: column;
             gap: 0.5rem;
-            height: 80%;
-        }
-        
-        .createInput {
-            padding: 10px 0px 10px 10px;
-            background-color: transparent;
-            color: #000000; /* Text color */
-            border: 0.1px solid #B5CBED; 
-            font-size: 20px;
-            border-radius: 10px;
-            transition: border 0.1s ease;
-        }
-        .createInput::placeholder {
-            color: #b4b4b4; /* Change placeholder color */
-            opacity: 4;  /* Ensure full visibility */
-            font-weight: 0;
-          }
-        
-        .createInput:focus {
-            border: 2px solid #B5CBED; /* Increase border width */
-            outline: none;
+            height: 83%;
         }
         
         .createTextArea { 
-            padding: 10px 0px 10px 10px;
-            color: #000000;
-            background-color: transparent;
-            color: #000000; 
-            border: none;
-            outline: none; 
-            font-size: 20px;
-            border: 0.1px solid #B5CBED; 
-            border-radius: 10px;
             height: 90%;
         }
-        
-        .createTextArea::placeholder {
-            color: #b4b4b4; /* Change placeholder color */
-            opacity: 4;  /* Ensure full visibility */
-            font-weight: 0;
-          }
-        
-        .createTextArea:focus {
-            border: 2px solid #B5CBED; /* Increase border width */
-            outline: none;
-        }
-        
-        .createButton {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .createSubmit {
-            background: none;
-            border: none;
-            color:#E8EAE5;
-            background-color: #749dc7;
-            font-size: 20px;
-            padding: 10px 25px;
-            border-radius: 10px;
-        
-        }
-        .createLink {
-            background: none;
-            border: none;
-            color:#E8EAE5;
-            text-decoration: none;
-            background-color: #749dc7;
-            font-size: 20px;
-            padding: 10px 25px;
-            border-radius: 10px;
-            border: 1px solid #B5CBED; 
-            border-radius: 10px;
-        } 
 }
 
 @media (max-width: 410px) {
-    .createWrapper {
-        position: fixed;  
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #6185a9;
-        overflow: hidden;
-    }
       
     .createContainer {
-        background-color: #F3F5F8;
-        box-shadow: none;
-        display: flex;
-        width: 100%; 
-        height: 98.5%; 
-        flex-direction: column;
-        justify-content: center;
-        gap: 0rem;
-        padding: 0rem 0.5rem;
-        border-top: 9px solid #6185a9;
-        border-bottom: 9px solid #6185a9;
-        border-left: 7px solid #6185a9;
-        border-right: 7px solid #6185a9;
-        border-radius: 0px;    
     }
     
+    .createForm {
+        gap: 0.7rem;
+    }
+
     .createField {
-        display: flex;
-        flex-direction: column;
         gap: 0.5rem;
-        height: 80%;
+        height: 85%;
     }
     
 }
