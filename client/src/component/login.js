@@ -16,8 +16,13 @@ export default function Login() {
     
     const API_BASE_URL =
     process.env.REACT_APP_NODE_ENV === "development"
-        ? process.env.REACT_APP_API_BASE_URL  // Hosted API
-        : process.env.REACT_APP_API_BASE_URL_PROD;  // Local API
+        ?  "http://localhost:5000"  // Local API
+        : "https://daily-diary-ekkt.onrender.com"; // Hosted API
+        
+    // const API_BASE_URL =
+    // process.env.REACT_APP_NODE_ENV === "development"
+    //     ? process.env.REACT_APP_API_BASE_URL  // Hosted API
+    //     : process.env.REACT_APP_API_BASE_URL_PROD;  // Local API
 
     console.log("API BASE URL:", API_BASE_URL); // Debugging log
 
