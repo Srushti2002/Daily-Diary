@@ -17,9 +17,9 @@ export default function Create() {
   const navigate = useNavigate();
   
   const API_BASE_URL =
-  process.env.REACT_APP_NODE_ENV === "production"
-      ? process.env.REACT_APP_API_BASE_URL_PROD  // Hosted API
-      : process.env.REACT_APP_API_BASE_URL;  // Local API
+  process.env.REACT_APP_NODE_ENV === "development"
+      ? process.env.REACT_APP_API_BASE_URL  // Hosted API
+      : process.env.REACT_APP_API_BASE_URL_PROD;  // Local API
 
   console.log("API BASE URL:", API_BASE_URL); // Debugging log
 

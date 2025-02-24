@@ -15,9 +15,10 @@ export default function Signup() {
     
     
     const API_BASE_URL =
-    process.env.REACT_APP_NODE_ENV === "production"
-        ? "https://daily-diary-ekkt.onrender.com"  // Hosted API
-        : "http://localhost:5000";  // Local API
+    process.env.REACT_APP_NODE_ENV === "development"
+        ?  "http://localhost:5000"  // Local API
+        : "https://daily-diary-ekkt.onrender.com"; // Hosted API
+         
 
     console.log("API BASE URL:", API_BASE_URL); // Debugging log
 

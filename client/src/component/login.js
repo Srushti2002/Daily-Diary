@@ -15,9 +15,9 @@ export default function Login() {
     const myRef = useRef(null);
     
     const API_BASE_URL =
-    process.env.REACT_APP_NODE_ENV === "production"
-        ? process.env.REACT_APP_API_BASE_URL_PROD  // Hosted API
-        : process.env.REACT_APP_API_BASE_URL;  // Local API
+    process.env.REACT_APP_NODE_ENV === "development"
+        ? process.env.REACT_APP_API_BASE_URL  // Hosted API
+        : process.env.REACT_APP_API_BASE_URL_PROD;  // Local API
 
     console.log("API BASE URL:", API_BASE_URL); // Debugging log
 
@@ -63,7 +63,7 @@ export default function Login() {
             if (err.response) {
                 console.log(err.response); // Show the exact message from the backend
                 alert("You are not registered to this service");
-                navigate("/signup");
+                navigate("/");
 
             } else {
                 alert("Something went wrong. Please try again.");
