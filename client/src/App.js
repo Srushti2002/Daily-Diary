@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Signup from './component/signup';
 import View from './component/view';
 import Login from './component/login';
+import NotFound from './component/notFound';
 import Create from './component/create';
 import Edit from './component/edit';
 // import Navbar from './component/navbar';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/create" element={<PrivateRoute><Create/></PrivateRoute>}/>
           <Route path="/view" element={<PrivateRoute><View /></PrivateRoute>}/>
           <Route path="/view/:entryID" element={<PrivateRoute><Edit /></PrivateRoute>}/>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       
     </div>
