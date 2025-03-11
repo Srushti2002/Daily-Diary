@@ -60,7 +60,7 @@ export default function Create() {
     max-sm:bg-[#6185a9] max-sm:bg-none max-sm:animate-none"
     // ref={myRef}
     >
-      <div className="bg-[#edf0f4] shadow-md flex flex-col w-3/5 h-[90%] pb-3 rounded-2xl max-xl:w-3/4  max-sm:w-full max-sm:h-full max-sm:rounded-none">
+      <div className="bg-[#edf0f4] shadow-md flex flex-col w-3/5 h-[90%] pb-3 overflow-y-auto rounded-2xl max-xl:w-3/4  max-sm:w-full max-sm:h-full max-sm:rounded-none">
         <div className="flex flex-row items-center justify-between bg-[#4863A0] px-7 max-xl:px-5"> 
         <h2 className="text-3xl text-white">Write</h2>
           <Navbar />
@@ -68,7 +68,7 @@ export default function Create() {
         <form className="flex flex-col gap-2 h-full px-7 py-2 max-sm:gap-1"
         onSubmit={handleSubmit}>
         <div className="flex flex-col h-[25%] max-sm:h-[20%]">
-          <label className=" text-[#545454] font-semibold text-2xl pl-2 pb-1" htmlFor='title'>Title</label>
+          <label className="text-[#545454] font-semibold text-2xl pl-2 pb-1" htmlFor='title'>Title</label>
           <input 
            className="h-[60%] px-2 py-3 bg-[#F3F5F8] text-[#545454] border border-[#949494] 
            text-[20px] rounded-[10px] transition-all duration-100 focus:border-2 

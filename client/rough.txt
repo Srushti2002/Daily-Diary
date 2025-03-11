@@ -1503,3 +1503,46 @@ edit.js
 }
 
 -----------------------------------------------------------------------------
+
+router.post("/view/ai-insights", async (req, res) => {
+    try {
+    //   console.log("Received AI insights request:", req.body);
+      const { entryId } = req.body;
+
+      if (!entryId) {
+        // console.log("❌ Error: Entry ID missing");
+        return res.status(400).json({ error: "Entry ID is required" });
+      }
+
+      const entry = await Entry.findById(entryId);
+      if (!entry) {
+        // console.log("❌ Error: Entry not found");
+        return res.status(404).json({ error: "Entry not found" });
+      }
+
+    //   console.log("✅ Entry Found:", entry);
+
+      const userEntry = `Title: ${entry.title}\nContent: ${entry.content}`;
+
+      // Call Gemini API
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const response = await model.generateContent(userEntry);
+      console.log("🔹 AI Response:", response);
+
+      const aiText = response.response.text();
+    //   console.log("🔹 Extracted AI Text:", aiText);
+
+      const moodMatch = aiText.match(/(happy|sad|excited|scared|neutral)/i);
+      const mood = moodMatch ? moodMatch[0].toLowerCase() : "neutral";
+      const summary = aiText.replace(moodMatch ? moodMatch[0] : "", "").trim();
+
+      res.json({
+        mood,
+        emoji: moodMapping[mood] || "😐",
+        summary,
+      });
+    } catch (error) {
+    //   console.error("❌ Gemini AI Error:", error);
+      res.status(500).json({ error: "Server error" });
+    }
+});
