@@ -118,14 +118,7 @@ color: #000000;
         justify-content: center;
 }
 
-    
-    h1{
-        display: flex;
-        justify-content: center;
-        color: #E6E9EB;
-        font-size: 40px;
-        margin-top: -30px;
-    }
+
     
     .signForm {
         display: flex;

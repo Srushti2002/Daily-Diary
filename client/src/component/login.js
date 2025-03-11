@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styles from '../styles/login.module.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
@@ -13,6 +12,8 @@ export default function Login() {
     const navigate = useNavigate();
     const [vantaEffect, setVantaEffect] = useState(null);
     const myRef = useRef(null);
+    const logField = "flex flex-col justify-center w-full pb-4 m-0";
+    const logInput = "w-full p-2 bg-[#eeeeee] border-[#717171] px-2 rounded-sm";
     
     // const API_BASE_URL =
     // process.env.NODE_ENV === "development"
@@ -77,15 +78,18 @@ export default function Login() {
     }
     
     return (
-        <div className={styles.logWrapper}  ref={myRef}>
-            <div className={styles.logContainer}>
-                <h1>Login</h1>
-                <form className={styles.logForm} onSubmit={handleSubmit}>
-                    <div className={styles.logField}>
+        <div className="h-screen flex justify-center items-center md:p-0 sm:m-0" ref={myRef}>
+            <div className="bg-[#FBFDFF] shadow-md flex flex-col px-7 py-5 leading-[2] rounded-2xl justify-center items-center max-w-[360px] opacity-95 w-1/2 
+            max-sm:bg-gradient-to-b max-sm:from-[#88aed4] max-sm:via-[#a5a3b7] max-sm:to-[#9bafcc] max-sm:w-full max-sm:max-w-full max-sm:h-full max-sm:rounded-none">
+                <h1 className="text-2xl pb-2 font-bold text-black-500">Welcome Back</h1>
+                <h6 className='text-center pb-4'>Log in to access your account</h6>
+                <form className="flex flex-col justify-center w-full" onSubmit={handleSubmit}>
+                    <div className={logField}>
+                        <label htmlFor='name'>Email</label>
                         <input
-                        className={styles.logInput}
+                        className={logInput}
                         type="email"
-                        placeholder="Email"
+                        placeholder="Enter your email"
                         autoComplete="off"
                         id="email"
                         name='email'
@@ -93,11 +97,12 @@ export default function Login() {
                         onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <div className={styles.logField}>
+                    <div className={logField}>
+                        <label htmlFor='password'>Password</label>
                         <input
-                        className={styles.logInput}
+                        className={logInput}
                         type="password"
-                        placeholder="password"
+                        placeholder="Enter your password"
                         autoComplete="off"
                         id="password"
                         name='password'
@@ -105,10 +110,10 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     
-                    <button className={styles.logSubmit} type="submit">Submit</button>
+                    <button  className="bg-blue-700 border-none text-[#E8EAE5] text-lg my-6 px-[5px] py-[10px] rounded-[5px] cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 focus:scale-110 " type="submit">Submit</button>
                 </form>
-                <p>Don't have an account ?</p>
-                <Link className={styles.logLink} to="/">Signup</Link>
+                <p className='text-center'>Don't have an account ?</p>
+                <Link className="underline-none text-center text-blue-700" to="/">Signup</Link>
             </div>
         </div>
     )
