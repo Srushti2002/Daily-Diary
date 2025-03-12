@@ -5,16 +5,16 @@ const Entry = require('./../model/Entry');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require("dotenv").config();
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  
-  const moodMapping = {
+const genAI = new GoogleGenerativeAI(process.env.GEMIN_API_KEY);
+
+const moodMapping = {
     happy: "😊",
     sad: "😢",
     excited: "🤩",
     scared: "😨",
     neutral: "😐",
     tired: "😮‍💨"
-  };
+};
 
 //Create the diary page - POST
 router.post('/create', jwtAuthMiddleware, async (req, res) => {
@@ -115,53 +115,46 @@ router.delete('/view/:entryID', jwtAuthMiddleware, async(req, res) => {
     }
 })
 
-router.post("/view/aiInsights", jwtAuthMiddleware,  async (req, res) => {
-    try {
+router.post("/view/aiInsights", jwtAuthMiddleware, async(req,res) => {
+    try{
         const { entryId } = req.body;
 
-        if (!entryId) {
-            return res.status(400).json({ error: "Entry ID is required" });
+        if(!entryId) {
+            return res.status(400).json({error: "Entry ID is required" });
         }
 
         const entry = await Entry.findById(entryId);
-        if (!entry) {
-            return res.status(404).json({ error: "Entry not found" });
+        if(!entry) {
+            return res.status(404).json({error : "Entry not found"});
         }
 
-        // 📝 Custom AI Prompt
         const prompt = `
         You are an AI that analyzes diary entries.
         Analyze the following diary entry and determine the mood of the writer (choose from: happy, sad, excited, scared, neutral).
         Then, provide a short three-line summary of their day.
-
+        
         Diary Entry:
         Title: ${entry.title}
         Content: ${entry.content}
-
+        
         Provide the response in this JSON format:
         {
             "mood": "<mood>",
             "summary": "<three-line summary>"
-        }
-        `;
+        }`
 
-        // Call Gemini API
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
         const modelResponse = await model.generateContent(prompt);
-        console.log("🔹 AI Response:", modelResponse);
+         
+        let aiText = modelResponse.response.text();
 
-        let aiText = modelResponse.response.text(); // Extract AI response
-        // console.log("🔹 Raw AI Text:", aiText);
-
-        // 🛠️ Remove code block formatting if present
         aiText = aiText.replace(/```json|```/g, "").trim();
 
-        // Parse the JSON response (if Gemini returns valid JSON)
         let aiData;
-        try {
+        try{
             aiData = JSON.parse(aiText);
-        } catch (error) {
-            console.log("⚠️ AI response is not in JSON format. Extracting manually.");
+        }catch(error) {
+            console.log("AI response is not in JSON format. Extracting manually.");
             const moodMatch = aiText.match(/(happy|sad|excited|scared|neutral|tired)/i);
             aiData = {
                 mood: moodMatch ? moodMatch[0].toLowerCase() : "happy",
@@ -174,11 +167,11 @@ router.post("/view/aiInsights", jwtAuthMiddleware,  async (req, res) => {
             emoji: moodMapping[aiData.mood] || "😐",
             summary: aiData.summary
         });
-
-    } catch (error) {
-        res.status(500).json({ error: "Server error" });
     }
-});
+    catch(error){
+        res.status(500).json({error : "Server error"});
+    }
+})
 
 
 module.exports = router;

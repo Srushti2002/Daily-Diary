@@ -53,14 +53,15 @@ export default function Create() {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-screen flex justify-center items-center 
+    <div className=" top-0 left-0 w-full h-screen flex justify-center items-center 
     bg-gradient-to-r from-[#bbddff] via-[#88aed4] to-[#697fa1] 
     animate-gradientMove 
     [background-size:400%_400%] 
     max-sm:bg-[#6185a9] max-sm:bg-none max-sm:animate-none"
     // ref={myRef}
     >
-      <div className="bg-[#edf0f4] shadow-md flex flex-col w-3/5 h-[90%] pb-3 overflow-y-auto rounded-2xl max-xl:w-3/4  max-sm:w-full max-sm:h-full max-sm:rounded-none">
+      <div className="bg-[#edf0f4] shadow-md flex flex-col w-3/5 h-[90%] pb-3 rounded-2xl max-xl:w-3/4 
+      max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:overflow-y-scroll">
         <div className="flex flex-row items-center justify-between bg-[#4863A0] px-7 max-xl:px-5"> 
         <h2 className="text-3xl text-white">Write</h2>
           <Navbar />

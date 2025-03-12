@@ -1546,3 +1546,138 @@ router.post("/view/ai-insights", async (req, res) => {
       res.status(500).json({ error: "Server error" });
     }
 });
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  
+  const moodMapping = {
+    happy: "😊",
+    sad: "😢",
+    excited: "🤩",
+    scared: "😨",
+    neutral: "😐",
+    tired: "😮‍💨"
+  };
+
+  router.post("/view/aiInsights", jwtAuthMiddleware,  async (req, res) => {
+    try {
+        const { entryId } = req.body;
+
+        if (!entryId) {
+            return res.status(400).json({ error: "Entry ID is required" });
+        }
+
+        const entry = await Entry.findById(entryId);
+        if (!entry) {
+            return res.status(404).json({ error: "Entry not found" });
+        }
+
+        // 📝 Custom AI Prompt
+        const prompt = `
+        You are an AI that analyzes diary entries.
+        Analyze the following diary entry and determine the mood of the writer (choose from: happy, sad, excited, scared, neutral).
+        Then, provide a short three-line summary of their day.
+
+        Diary Entry:
+        Title: ${entry.title}
+        Content: ${entry.content}
+
+        Provide the response in this JSON format:
+        {
+            "mood": "<mood>",
+            "summary": "<three-line summary>"
+        }
+        `;
+
+        // Call Gemini API
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const modelResponse = await model.generateContent(prompt);
+        console.log("🔹 AI Response:", modelResponse);
+
+        let aiText = modelResponse.response.text(); // Extract AI response
+        // console.log("🔹 Raw AI Text:", aiText);
+
+        // 🛠️ Remove code block formatting if present
+        aiText = aiText.replace(/```json|```/g, "").trim();
+
+        // Parse the JSON response (if Gemini returns valid JSON)
+        let aiData;
+        try {
+            aiData = JSON.parse(aiText);
+        } catch (error) {
+            console.log("⚠️ AI response is not in JSON format. Extracting manually.");
+            const moodMatch = aiText.match(/(happy|sad|excited|scared|neutral|tired)/i);
+            aiData = {
+                mood: moodMatch ? moodMatch[0].toLowerCase() : "happy",
+                summary: aiText.replace(moodMatch ? moodMatch[0] : "", "").trim()
+            };
+        }
+
+        res.json({
+            mood: aiData.mood,
+            emoji: moodMapping[aiData.mood] || "😐",
+            summary: aiData.summary
+        });
+
+    } catch (error) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import styles from '../styles/navbar.module.css'
+
+export default function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const location = useLocation(); // Get current page
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen)
+    }
+
+    useEffect(() => {
+        const closeMenuOutsideClick = (event) => {
+            const targetElement = event.target;
+
+            if(!targetElement.closest(`.${styles.menu}`) && !targetElement.closest(`${styles.hamburgerMenu}`)) {
+                setMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('click', closeMenuOutsideClick);
+
+        return () => {
+            document.removeEventListener('click', closeMenuOutsideClick);
+        };
+    }, [])
+
+    return (
+        <div className="flex justify-end p-[1.5rem_1rem] relative" data-page={location.pathname.substring(1) || "create"}>
+            <div className={`${styles.menu} ${menuOpen ? styles.menuOpen : ''}`}>
+                <div className={styles.hamburgerMenu} onClick={toggleMenu}>
+                    <div className={`${styles.bar} ${menuOpen ? styles.bar1Open : ''}`}/>
+                    <div className={`${styles.bar} ${menuOpen ? styles.bar2Open : ''}`}/>
+                    <div className={`${styles.bar} ${menuOpen ? styles.bar3Open : ''}`}/>
+                        {menuOpen ? 
+                        <ul className={styles.menuList}>
+                            <li>
+                                <Link className={styles.linkStyle} to="/">Signup</Link>
+                            </li>
+                            <li>
+                                <Link className={styles.linkStyle} to="/login">Login</Link>
+                            </li>
+                            <li>
+                                <Link className={styles.linkStyle} to="/create">Create</Link>
+                            </li>
+                            <li>
+                                <Link className={styles.linkStyle} to="/view">View</Link>
+                            </li>
+                        </ul>:
+                        <div></div>
+                        }
+                </div>
+            </div>
+        </div>
+    )
+}

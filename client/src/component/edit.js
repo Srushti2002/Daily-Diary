@@ -11,7 +11,7 @@ export default function Edit() {
   const [entry, setEntry] = useState({title: '', content: ''});
   const [isEditing, setIsEditing] = useState(false);
   const [aiData, setAiData] = useState(null);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowpopup] = useState(false);
 
   
   // const API_BASE_URL =
@@ -58,31 +58,34 @@ export default function Edit() {
     }
   }
 
-  const handleAIInsights = async () => {
-    try {
+const handleAiInsights = async () => {
+  try{
       const response = await axios.post(`${API_BASE_URL}/view/aiInsights`, 
-      { entryId: entryID },  // ✅ Send entryId in request body
+      {entryId: entryID},
       {
-          headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
       });
 
       setAiData(response.data);
-      setShowPopup(true);
-    } catch (error) {
-      console.error("Error fetching AI insights:", error);
-      alert("Failed to fetch AI insights. Please try again.");
-    }
-  };
+      setShowpopup(true);
+  }
+  catch(error) {
+    console.error("Error fetching AI insights: ", error);
+    alert("Failed to fetch AI insights. Please try again.");
+  }
+};
+
   return (
-    <div className="fixed top-0 left-0 w-full h-screen flex justify-center items-center 
+    <div className="top-0 left-0 w-full h-screen flex justify-center items-center 
     bg-gradient-to-r from-[#bbddff] via-[#88aed4] to-[#697fa1] 
     animate-gradientMove 
     [background-size:400%_400%] 
     max-sm:bg-[#6185a9] max-sm:bg-none max-sm:animate-none">
       
-      <div className="bg-[#edf0f4] shadow-md flex flex-col w-3/5 h-[90%] overflow-y-auto pb-3 rounded-2xl max-xl:w-3/4  max-sm:w-full max-sm:h-full max-sm:rounded-none">
+      <div className="bg-[#edf0f4] shadow-md flex flex-col w-3/5 h-[90%] overflow-y-auto pb-3
+      rounded-2xl max-xl:w-3/4  max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:overflow-y-scroll">
         <div className="flex flex-row items-center justify-between bg-[#4863A0] px-7 max-xl:px-5">
           <h2 className="text-3xl text-white">Diary</h2>
           <Navbar />
@@ -113,20 +116,18 @@ export default function Edit() {
         <div className="flex flex-row justify-start items-center">        
           <button className="border-0  text-[#E8EAE5] bg-[#4863A0] text-[20px] px-[35px] py-[7px] mr-[5px] rounded-[10px] max-sm:rounded-[30px]" onClick={handleEditToggle}>{isEditing ? 'Save': 'Edit'}</button>
           <button  className="text-[#E8EAE5] no-underline m-[5px] bg-[#4863A0] text-[20px] px-[30px] py-[7px] rounded-[10px] border border-[#B5CBED] max-sm:rounded-[30px]" type="submit" onClick={handleDelete}>Delete</button>
-          <button  className="text-[#E8EAE5] no-underline m-[5px] bg-[#4863A0] text-[20px] px-[30px] py-[7px] rounded-[10px] border border-[#B5CBED] max-sm:rounded-[30px]" type="submit" onClick={handleAIInsights}>moodAI</button>
+          <button className="text-[#E8EAE5] no-underline m-[5px] bg-[#4863A0] text-[20px] px-[30px] py-[7px] rounded-[10px] border border-[#B5CBED] max-sm:rounded-[30px]" type="submit" onClick={handleAiInsights}>moodAI</button>
           {showPopup && aiData && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center w-96">
-              <h3 className="text-xl font-semibold mb-2">AI Insights</h3>
-              <p className="text-lg"><strong>Mood:</strong> {aiData.mood} {aiData.emoji}</p>
-              <p className="text-gray-700">{aiData.summary}</p>
-              <button 
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center w-96">
+                <h3 className="text-xl font-semibold mb-2">Ai Insights</h3>
+                <p className="text-lg"><strong>Mood:</strong>{aiData.mood} {aiData.emoji}</p>
+                <p className="text-gray-700">{aiData.summary}</p>
+                <button 
                 className="mt-4 px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-                onClick={() => setShowPopup(false)}>
-                Close
-              </button>
+                onClick={() => setShowpopup(false)}>Close</button>
+              </div>
             </div>
-          </div>
           )}
         </div>
         </div>
