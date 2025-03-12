@@ -77,45 +77,90 @@ const handleAiInsights = async () => {
   }
 };
 
-  return (
-    <div className="top-0 left-0 w-full h-screen flex justify-center items-center 
-    bg-gradient-to-r from-[#bbddff] via-[#88aed4] to-[#697fa1] 
-    animate-gradientMove 
-    [background-size:400%_400%] 
-    max-sm:bg-[#6185a9] max-sm:bg-none max-sm:animate-none">
-      
-      <div className="bg-[#edf0f4] shadow-md flex flex-col w-3/5 h-[90%] overflow-y-auto pb-3
-      rounded-2xl max-xl:w-3/4  max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:overflow-y-scroll">
-        <div className="flex flex-row items-center justify-between bg-[#4863A0] px-7 max-xl:px-5">
-          <h2 className="text-3xl text-white">Diary</h2>
-          <Navbar />
-        </div>
-        <div className="flex flex-col gap-2 h-full px-7 py-2 max-sm:gap-1">
-        <div className="flex flex-col h-[25%] max-sm:h-[20%]">
-          <label className="text-[#545454] font-semibold text-2xl pl-2 pb-1" htmlFor='title'>Title</label>
-          <input 
-            className="h-[60%] px-2 py-3 bg-[#F3F5F8] text-[#545454] border border-[#949494] 
+  return (<div
+    className="top-0 left-0 w-full h-screen flex justify-center items-center 
+  bg-gradient-to-r from-[#bbddff] via-[#88aed4] to-[#697fa1] 
+  animate-gradientMove 
+  [background-size:400%_400%] 
+  max-sm:bg-[#6185a9] max-sm:bg-none max-sm:animate-none
+  max-sm:min-h-screen"
+    style={{ overflow: "auto" }}
+  >
+    <div
+      className="bg-[#edf0f4] shadow-md flex flex-col w-3/5 h-[90%] pb-3 rounded-2xl max-xl:w-3/4 
+    max-sm:w-full max-sm:h-full max-sm:rounded-none"
+      style={{ overflow: "auto" }}
+    >
+      <div 
+        className="flex flex-row items-center justify-between bg-[#4863A0] px-7 max-xl:px-5 sticky top-0 z-10"
+        style={{ overflow: "visible" }}
+      >
+        <h2 className="text-3xl text-white py-2">Diary</h2>
+        <Navbar />
+      </div>
+      <div 
+        className="flex flex-col gap-2 flex-grow px-7 py-2 max-sm:gap-1 max-sm:px-4"
+        style={{ overflow: "auto", minHeight: "0" }}
+      >
+        <div className="flex flex-col mb-3" style={{ overflow: "visible" }}>
+          <label
+            className="text-[#545454] font-semibold text-2xl pl-2 pb-1 max-sm:text-xl"
+            htmlFor="title"
+            style={{ overflow: "visible" }}
+          >
+            Title
+          </label>
+          <input
+            className="px-2 py-3 bg-[#F3F5F8] text-[#545454] border border-[#949494] 
             text-[20px] rounded-[10px] transition-all duration-100 focus:border-2 
-            focus:border-[#949494] focus:outline-none placeholder:text-[#b4b4b4] placeholder:opacity-100"
+            focus:border-[#949494] focus:outline-none placeholder:text-[#b4b4b4] placeholder:opacity-100
+            max-sm:text-base max-sm:py-2"
             type="text"
             value={entry.title}
-            onChange={(e) => setEntry({...entry, title: e.target.value })}
+            onChange={(e) => setEntry({ ...entry, title: e.target.value })}
             disabled={!isEditing}
-          /> 
-        </div>
-        <div className="flex flex-col h-full">
-          <label className="text-2xl pl-2 pb-1 text-[#545454] font-semibold" htmlFor='story'>Story</label>
-          <textarea 
-            className="h-[90%] px-2 py-3 bg-[#F3F5F8] text-[#545454] border border-[#949494] text-[20px] rounded-[10px] transition-all duration-100 focus:border-2 focus:border-[#949494] focus:outline-none placeholder:text-[#b4b4b4] placeholder:opacity-100"
-            value={entry.content}
-            onChange={(e) => setEntry({...entry, content: e.target.value })}
-            disabled={!isEditing}
-            style={{ resize: "none", overflowY: "auto", scrollbarWidth: "none" }}
+            style={{ overflow: "visible", height: "auto", minHeight: "50px" }}
           />
         </div>
-        <div className="flex flex-row justify-start items-center">        
-          <button className="border-0  text-[#E8EAE5] bg-[#4863A0] text-[20px] px-[35px] py-[7px] mr-[5px] rounded-[10px] max-sm:rounded-[30px]" onClick={handleEditToggle}>{isEditing ? 'Save': 'Edit'}</button>
-          <button  className="text-[#E8EAE5] no-underline m-[5px] bg-[#4863A0] text-[20px] px-[30px] py-[7px] rounded-[10px] border border-[#B5CBED] max-sm:rounded-[30px]" type="submit" onClick={handleDelete}>Delete</button>
+        <div 
+          className="flex flex-col flex-grow mb-3"
+          style={{ overflow: "visible", display: "flex" }}
+        >
+          <label
+            className="text-2xl pl-2 pb-1 text-[#545454] font-semibold max-sm:text-xl"
+            htmlFor="story"
+            style={{ overflow: "visible" }}
+          >
+            Story
+          </label>
+          <textarea
+            className="flex-grow px-2 py-3 bg-[#F3F5F8] text-[#545454] border border-[#949494] 
+            text-[20px] rounded-[10px] transition-all duration-100 focus:border-2 
+            focus:border-[#949494] focus:outline-none placeholder:text-[#b4b4b4] placeholder:opacity-100
+            max-sm:text-base max-sm:py-2"
+            value={entry.content}
+            onChange={(e) => setEntry({ ...entry, content: e.target.value })}
+            disabled={!isEditing}
+            style={{
+              resize: "none",
+              overflowY: "auto",
+              flex: 1,
+              minHeight: "200px",
+            }}
+          />
+        </div>
+        <div 
+          className="flex flex-row justify-start items-center py-2"
+          style={{ overflow: "visible" }}
+        >
+          <button
+             className="text-[#E8EAE5] no-underline m-[5px] bg-[#4863A0] text-[20px] px-[30px] py-[7px] rounded-[10px] border border-[#B5CBED] max-sm:rounded-[30px]" 
+             onClick={handleEditToggle}
+            style={{ overflow: "visible" }}
+          >
+            {isEditing ? "Save" : "Edit"}
+          </button>
+          <button className="text-[#E8EAE5] no-underline m-[5px] bg-[#4863A0] text-[20px] px-[30px] py-[7px] rounded-[10px] border border-[#B5CBED] max-sm:rounded-[30px]" type="submit" onClick={handleDelete}>Delete</button>
           <button className="text-[#E8EAE5] no-underline m-[5px] bg-[#4863A0] text-[20px] px-[30px] py-[7px] rounded-[10px] border border-[#B5CBED] max-sm:rounded-[30px]" type="submit" onClick={handleAiInsights}>moodAI</button>
           {showPopup && aiData && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
