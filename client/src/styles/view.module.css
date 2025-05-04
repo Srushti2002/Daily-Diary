@@ -77,14 +77,17 @@
     height: 100%;
   }
 
+
   .react-calendar__month-view {
     display: grid !important;
     grid-template-columns: repeat(7, 1fr) !important; /* Ensures 7 columns always */
+    
   }
   
   .react-calendar__tile {
     font-size: clamp(10px, 2vw, 16px) !important; /* Responsive font size */
     text-align: center;
+
   }
   
   .react-calendar__navigation {
@@ -101,6 +104,8 @@
   border: none;
   padding: 8px 16px;
 }
+
+
 .react-calendar__month-view__weekdays {
     text-decoration: none !important;
     text-transform: lowercase;
@@ -109,7 +114,7 @@
 /* Styling for active date */
 .react-calendar__tile--active {
   background-color: #88aed4;
-  color: white !important;
+  color:#96b5e6 !important;
   border-radius: 5px;
 }
 

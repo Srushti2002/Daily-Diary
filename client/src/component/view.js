@@ -64,7 +64,7 @@ export default function View() {
            </div>
            <div className="flex flex-row h-full px-6 py-2 gap-1 max-lx:gap-0.5rem max-sm:flex-col">
             <div className="flex flex-col gap-1 justify-center w-[45%] max-xl:w-[55%] max-lg:w-[70%] max-md:w-full max-sm:w-full max-sm:h-full max-sm:items-center max-sm:justify-center">
-                <Calendar className="[width:300px] [height:500px] rounded-[10px] px-3/2 py-1 border-2  shadow-md max-md:[height:350px] max-sm:[height:300px]" onChange={handleDateChange} value={selectedDate} 
+                <Calendar className="[width:300px] [height:500px] rounded-[10px] px-3/2 py-1 border-2 shadow-md max-md:[height:350px] max-sm:[height:300px] overflow-y-auto scrollbar-hide" onChange={handleDateChange} value={selectedDate} 
                 maxDate={new Date()} // Restrict future dates
                 tileClassName={({ date }) =>
                 date.toDateString() === new Date().toDateString() ? styles.todayHighlight : ''
